@@ -22,11 +22,12 @@ const rightArrow = document.querySelector('.arrow_right')
 const bannerImg = document.querySelector('.banner-img')
 const dots = document.querySelector('.dots')
 const bannerTagLine = document.querySelector('#banner p')
+
 let currentIndex = 0
 
 leftArrow.addEventListener('click', (event) => {
 	if (event.button === 0) {
-		currentIndex --;
+		currentIndex--;
 		if (currentIndex < 0) {
 			currentIndex = slides.length - 1;
 		}
@@ -37,7 +38,7 @@ leftArrow.addEventListener('click', (event) => {
 });
 rightArrow.addEventListener('click', (event) => {
 	if (event.button === 0) {
-		currentIndex ++;
+		currentIndex++;
 		if (currentIndex > slides.length - 1) {
 			currentIndex = 0;
 		}
@@ -48,21 +49,24 @@ rightArrow.addEventListener('click', (event) => {
 });
 for (let i = 0; i < slides.length; i++) {
 	const dot = document.createElement('p')
-	dot.classList.add('dot');
 	if (i === currentIndex) {
-		dot.classList.add('dot-selected');
-	  }
+		dot.classList.add('dot_selected');
+	}
+	dot.classList.add('dot');
 	dots.appendChild(dot)
 	dots.innerHTML += dot.innerHTML;
 	
 }
+
+updateDots()
+
 function updateDots() {
 	const dotList = document.querySelectorAll('.dot');
 	dotList.forEach((dot, index) => {
-	  if (index === currentIndex) {
-		dot.classList.add('dot_selected');
-	  } else {
-		dot.classList.remove('dot_selected');
-	  }
+		if (index === currentIndex) {
+			dot.classList.add('dot_selected');
+		} else {
+			dot.classList.remove('dot_selected');
+		}
 	});
-  }
+}
