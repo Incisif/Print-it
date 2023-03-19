@@ -24,30 +24,37 @@ const dots = document.querySelector('.dots')
 const bannerTagLine = document.querySelector('#banner p')
 let currentIndex = 0
 
+// This function updates the selection of dots based on the current index.
+function updateDots() {
+	const dotList = document.querySelectorAll('.dot');
+	dotList.forEach((dot, index) => {
+		if (index === currentIndex) {
+			dot.classList.add('dot_selected');
+		} else {
+			dot.classList.remove('dot_selected');
+		}
+	});
+}
 //Handles left arrow clicks and updates the banner accordingly.
 leftArrow.addEventListener('click', (event) => {
-	if (event.button === 0) {
-		currentIndex--;
-		if (currentIndex < 0) {
-			currentIndex = slides.length - 1;
-		}
-		bannerImg.setAttribute("src", slides[currentIndex].image);
-		bannerTagLine.innerHTML = slides[currentIndex].tagLine;
-		updateDots();
+	currentIndex--;
+	if (currentIndex < 0) {
+		currentIndex = slides.length - 1;
 	}
+	bannerImg.setAttribute("src", slides[currentIndex].image);
+	bannerTagLine.innerHTML = slides[currentIndex].tagLine;
+	updateDots();
 });
 
 //Handles left arrow clicks and updates the banner accordingly.
 rightArrow.addEventListener('click', (event) => {
-	if (event.button === 0) {
-		currentIndex++;
-		if (currentIndex > slides.length - 1) {
-			currentIndex = 0;
-		}
-		bannerImg.setAttribute("src", slides[currentIndex].image);
-		bannerTagLine.innerHTML = slides[currentIndex].tagLine;
-		updateDots();
+	currentIndex++;
+	if (currentIndex > slides.length - 1) {
+		currentIndex = 0;
 	}
+	bannerImg.setAttribute("src", slides[currentIndex].image);
+	bannerTagLine.innerHTML = slides[currentIndex].tagLine;
+	updateDots();
 });
 
 
@@ -60,15 +67,3 @@ for (const slide of slides) {
 }
 
 updateDots()
-
-// This function updates the selection of dots based on the current index.
-function updateDots() {
-	const dotList = document.querySelectorAll('.dot');
-	dotList.forEach((dot, index) => {
-		if (index === currentIndex) {
-			dot.classList.add('dot_selected');
-		} else {
-			dot.classList.remove('dot_selected');
-		}
-	});
-}
