@@ -17,12 +17,12 @@ const slides = [
 	}
 ]
 
-const leftArrow = document.querySelector('.arrow_left')
-const rightArrow = document.querySelector('.arrow_right')
-const bannerImg = document.querySelector('.banner-img')
-const dots = document.querySelector('.dots')
-const bannerTagLine = document.querySelector('#banner p')
-let currentIndex = 0
+const leftArrow = document.querySelector('.arrow_left');
+const rightArrow = document.querySelector('.arrow_right');
+const bannerImg = document.querySelector('.banner-img');
+const dots = document.querySelector('.dots');
+const bannerTagLine = document.querySelector('#banner p');
+let currentIndex = 0;
 
 // This function updates the selection of dots based on the current index.
 function updateDots() {
@@ -36,7 +36,7 @@ function updateDots() {
 	});
 }
 //Handles left arrow clicks and updates the banner accordingly.
-leftArrow.addEventListener('click', (event) => {
+leftArrow.addEventListener('click', () => {
 	currentIndex--;
 	if (currentIndex < 0) {
 		currentIndex = slides.length - 1;
@@ -47,7 +47,7 @@ leftArrow.addEventListener('click', (event) => {
 });
 
 //Handles left arrow clicks and updates the banner accordingly.
-rightArrow.addEventListener('click', (event) => {
+rightArrow.addEventListener('click', () => {
 	currentIndex++;
 	if (currentIndex > slides.length - 1) {
 		currentIndex = 0;
@@ -60,10 +60,9 @@ rightArrow.addEventListener('click', (event) => {
 
 //Creates dots for each slide
 for (const slide of slides) {
-	const dot = document.createElement('p');
+	const dot = document.createElement('div');
 	dot.classList.add('dot');
 	dots.appendChild(dot);
-	dots.innerHTML += dot.innerHTML;
 }
 
 updateDots()
